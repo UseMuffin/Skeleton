@@ -1,0 +1,49 @@
+{
+    "name": "muffin/{{lcPluginName}}",
+    "description": "{{@TODO description}}",
+    "type": "cakephp-plugin",
+    "keywords": [
+        "cakephp",
+        "muffin",
+        "{{lcPluginName}}"
+    ],
+    "homepage": "https://github.com/usemuffin/{{lcPluginName}}",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jad Bitar",
+            "homepage": "http://jadb.io",
+            "role": "Author"
+        },
+        {
+            "name": "ADmad",
+            "homepage": "https://github.com/ADmad",
+            "role": "Author"
+        },
+        {
+            "name": "Others",
+            "homepage": "https://github.com/usemuffin/{{lcPluginName}}/graphs/contributors"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/usemuffin/{{lcPluginName}}/issues",
+        "source": "https://github.com/usemuffin/{{lcPluginName}}"
+    },
+    "require": {
+    },
+    "require-dev": {
+        "cakephp/cakephp": "~3.0",
+        "cakephp/cakephp-codesniffer": "2.*",
+        "phpunit/phpunit": "4.1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Muffin\\{{pluginName}}\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Muffin\\{{pluginName}}\\Test\\": "tests"
+        }
+    }
+}
