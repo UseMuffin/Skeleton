@@ -48,7 +48,7 @@ http://github.com/usemuffin/{{lcPluginName}}/issues
 
 ## License
 
-Copyright (c) 2015, [Use Muffin] and licensed under [The MIT License][mit].
+Copyright (c) 2015, [Use Muffin][muffin] and licensed under [The MIT License][mit].
 
 [cakephp]:http://cakephp.org
 [composer]:http://getcomposer.org
