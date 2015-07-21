@@ -21,7 +21,7 @@ You then need to load the plugin. You can use the shell command:
 bin/cake plugin load Muffin/{{pluginName}}
 ```
 
-or by manually adding statement shown below to `boostrap.php`:
+or by manually adding statement shown below to `bootstrap.php`:
 
 ```php
 Plugin::load('Muffin/{{pluginName}}');
