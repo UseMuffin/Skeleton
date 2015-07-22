@@ -40,7 +40,7 @@ Plugin::load('Muffin/{{pluginName}}');
 their own that I can ignore when I pull)
 * Pull request - bonus point for topic branches
 
-To ensure your PRs are considered for upstream, you MUST follow the CakePHP coding standards.
+To ensure your PRs are considered for upstream, you MUST follow the [CakePHP coding standards][standards].
 
 ## Bugs & Feedback
 
@@ -54,3 +54,4 @@ Copyright (c) 2015, [Use Muffin][muffin] and licensed under [The MIT License][mi
 [composer]:http://getcomposer.org
 [mit]:http://www.opensource.org/licenses/mit-license.php
 [muffin]:http://usemuffin.com
+[standards]:http://book.cakephp.org/3.0/en/contributing/cakephp-coding-conventions.html
