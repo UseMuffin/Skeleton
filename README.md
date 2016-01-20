@@ -12,7 +12,7 @@
 Using [Composer][composer]:
 
 ```
-composer require muffin/{{lcPluginName}}:dev-master
+composer require muffin/{{lcPluginName}}:1.0.x-dev
 ```
 
 You then need to load the plugin. You can use the shell command:
