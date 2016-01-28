@@ -1,7 +1,7 @@
 # {{pluginName}}
 
 [![Build Status](https://img.shields.io/travis/UseMuffin/{{pluginName}}/master.svg?style=flat-square)](https://travis-ci.org/UseMuffin/{{pluginName}})
-[![Coverage](https://img.shields.io/coveralls/UseMuffin/{{pluginName}}/master.svg?style=flat-square)](https://coveralls.io/r/UseMuffin/{{pluginName}})
+[![Coverage](https://img.shields.io/codecov/c/github/UseMuffin/{{pluginName}}.svg?style=flat-square)](https://codecov.io/github/UseMuffin/{{pluginName}})
 [![Total Downloads](https://img.shields.io/packagist/dt/muffin/{{lcPluginName}}.svg?style=flat-square)](https://packagist.org/packages/muffin/{{lcPluginName}})
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
