@@ -1,35 +1,22 @@
 {
-    "name": "muffin/{{lcPluginName}}",
-    "description": "{{@TODO description}}",
-    "type": "cakephp-plugin",
+    "name": "muffin/skeleton",
+    "description": "A plugin skeleton builder for CakePHP 3",
+    "type": "project",
     "keywords": [
         "cakephp",
-        "muffin",
-        "{{lcPluginName}}"
+        "plugin",
+        "skeleton"
     ],
-    "homepage": "https://github.com/usemuffin/{{lcPluginName}}",
+    "homepage": "https://github.com/usemuffin/skeleton",
     "license": "MIT",
     "authors": [
         {
-            "name": "Jad Bitar",
-            "homepage": "http://jadb.io",
-            "role": "Author"
-        },
-        {
-            "name": "ADmad",
-            "homepage": "https://github.com/ADmad",
-            "role": "Author"
-        },
-        {
-            "name": "Others",
-            "homepage": "https://github.com/usemuffin/{{lcPluginName}}/graphs/contributors"
+            "name": "Jad Bitar"
         }
     ],
     "support": {
-        "issues": "https://github.com/usemuffin/{{lcPluginName}}/issues",
-        "source": "https://github.com/usemuffin/{{lcPluginName}}"
-    },
-    "require": {
+        "issues": "https://github.com/usemuffin/skeleton/issues",
+        "source": "https://github.com/usemuffin/skeleton"
     },
     "require-dev": {
         "cakephp/cakephp": "~3.0",
@@ -38,15 +25,20 @@
     },
     "autoload": {
         "psr-4": {
-            "Muffin\\{{pluginName}}\\": "src"
+            "Muffin\\Skeleton\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Muffin\\{{pluginName}}\\Test\\": "tests"
+            "Muffin\\Skeleton\\Test\\": "tests"
         }
     },
     "scripts": {
+        "pre-install-cmd": ["Muffin\\Skeleton\\Console\\Installer::preInstall"],
+        "post-install-cmd": [
+            "Muffin\\Skeleton\\Console\\Installer::postInstall",
+            "composer update"
+        ],
         "test": [
             "phpcs src tests",
             "phpunit"
