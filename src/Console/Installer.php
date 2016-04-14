@@ -20,8 +20,8 @@ class Installer
     private static $author;
 
     /**
-     * Whether to create the `config` folder or not. Accepted
-     * values are `Y` and `N`.
+     * Whether to leave the `config/bootstrap.php` file or not.
+     * Accepted values are `Y` and `N`.
      *
      * @var string
      */
@@ -43,8 +43,8 @@ class Installer
     private static $github;
 
     /**
-     * Whether to create the `config/Migrations` folder or not.
-     * Accepted values are `Y` and `N`.
+     * Whether to leave the `config/Migrations/001_init.php` file
+     * or not. Accepted values are `Y` and `N`.
      *
      * @var string
      */
@@ -77,6 +77,14 @@ class Installer
      * @var string
      */
     private static $plugin;
+
+    /**
+     * Whether to leave the `config/routes.php` file or not.
+     * Accepted values are `Y` and `N`.
+     *
+     * @var string
+     */
+    private static $routes;
 
     /**
      * The plugin's vendor name.
@@ -138,6 +146,16 @@ class Installer
             );
         }
 
+
+        while (!in_array(static::$routes, ['Y', 'N'])) {
+            static::$routes = static::_ask(
+                $io,
+                'Does your plugin need custom routes (Y/N)?',
+                null,
+                'Y'
+            );
+        }
+
         $githubUser = static::_gitConfig('github.user');
         $dashedName = static::_dasherize(static::$name);
 
@@ -183,9 +201,10 @@ class Installer
         }
 
         static::_customizeComposerFile();
-
-        $message = sprintf("<info>The %s plugin for Cake3 was successfully created.</info>\n");
-        $io->write($message, static::$plugin);
+        $io->write(sprintf(
+            "<info>The %s plugin for Cake3 was successfully created.</info>\n",
+            static::$plugin
+        ));
     }
 
     /**
@@ -200,16 +219,29 @@ class Installer
     public static function postInstall(Event $event = null)
     {
         $path = dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR;
+        $configPath = $path . 'config' . DIRECTORY_SEPARATOR;
+
+        if (static::$migrations === 'N') {
+            unlink($configPath . 'Migrations' . DIRECTORY_SEPARATOR . '001_init.php');
+            rmdir($configPath . 'Migrations');
+        }
+
+        if (static::$routes === 'N') {
+            unlink($configPath . 'routes.php');
+        }
+
+        if (static::$configuration === 'N') {
+            unlink($configPath . 'bootstrap.php');
+        }
+
+        if (static::$configuration === 'N'
+            && static::$migrations === 'N'
+            && static::$routes === 'N'
+        ) {
+            rmdir($configPath);
+        }
 
         static::_recursivelyReplacePlaceholders($path);
-
-        if (static::$configuration === 'Y' || static::$migrations === 'Y') {
-            mkdir($path . 'config');
-        }
-
-        if (static::$migrations === 'Y') {
-            mkdir($path . 'config' . DIRECTORY_SEPARATOR . 'Migrations');
-        }
 
         unlink(__FILE__);
         rmdir(__DIR__);
