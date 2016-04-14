@@ -46,6 +46,12 @@
             "Muffin\\{{pluginName}}\\Test\\": "tests"
         }
     },
+    "scripts": {
+        "test": [
+            "phpcs src tests",
+            "phpunit"
+        ]
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "1.0.x-dev"
