@@ -95,17 +95,47 @@ class Installer
     {
         $io = $event->getIO();
 
-        static::$author = static::ask($io, 'What is your name ?', null, static::_gitConfig('user.name'));
-        static::$name = static::ask($io, 'What is your plugin\'s name?');
-        static::$vendor = $packagist = static::ask($io, 'What is your plugin\'s vendor name?');
-        static::$description = static::ask($io, 'What does your plugin do?');
+        static::$author = static::ask(
+            $io,
+            'What is your name?',
+            'This will be used as the author\'s name in the plugin\'s composer.json file',
+            static::_gitConfig('user.name')
+        );
+
+        static::$name = static::ask(
+            $io,
+            'What is your plugin\'s name?',
+            'Do not include any vendor prefix just yet :)'
+        );
+
+        static::$vendor = $packagist = static::ask(
+            $io,
+            'What is your plugin\'s vendor name?',
+            'Leave empty if not prefixing the plugin with a vendor name.'
+        );
+
+        static::$description = static::ask(
+            $io,
+            'How would you describe your plugin?',
+            'This is used in the plugin\'s README and composer.json file'
+        );
 
         while (!in_array(static::$configuration, ['Y', 'N'])) {
-            static::$configuration = static::ask($io, 'Does your plugin need configuration (Y/N)?', null, 'Y');
+            static::$configuration = static::ask(
+                $io,
+                'Does your plugin need configuration (Y/N)?',
+                null,
+                'Y'
+            );
         }
 
         while (!in_array(static::$migrations, ['Y', 'N'])) {
-            static::$migrations = static::ask($io, 'Does your plugin need database migrations (Y/N)?', null, 'Y');
+            static::$migrations = static::ask(
+                $io,
+                'Does your plugin need database migrations (Y/N)?',
+                null,
+                'Y'
+            );
         }
 
         $githubUser = static::_gitConfig('github.user');
@@ -127,7 +157,12 @@ class Installer
         }
 
         static::$github = sprintf('%s/%s', $githubUser, 'cakephp-' . $dashedName);
-        static::$github = static::ask($io, 'What is the GitHub\'s plugin URL', null, static::$github);
+        static::$github = static::ask(
+            $io,
+            'What is the GitHub\'s plugin relative URL',
+            'For the skeleton repo for example, it\'s usemuffin/skeleton',
+            static::$github
+        );
 
         static::$namespace = implode("\\", [static::$name, '']);
         if (!empty(static::$vendor)) {
