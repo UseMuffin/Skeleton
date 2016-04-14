@@ -202,7 +202,7 @@ class Installer
 
         static::_customizeComposerFile();
         $io->write(sprintf(
-            "<info>The %s plugin for Cake3 was successfully created.</info>\n",
+            "<info>The %s plugin for CakePHP was successfully created.</info>\n",
             static::$plugin
         ));
     }
