@@ -229,6 +229,22 @@ class Installer
     public static function postInstall(Event $event = null)
     {
         $path = dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR;
+
+        static::_removeUnusedConfigurationFiles($path);
+        static::_recursivelyReplacePlaceholders($path);
+
+        unlink(__FILE__);
+        rmdir(__DIR__);
+    }
+
+    /**
+     * Removes configuration/migration/routes files when needed.
+     *
+     * @param string $path Plugin's absolute path.
+     * @return void
+     */
+    protected static function _removeUnusedConfigurationFiles($path)
+    {
         $configPath = $path . 'config' . DIRECTORY_SEPARATOR;
 
         if (static::$migrations === 'N') {
@@ -250,11 +266,6 @@ class Installer
         ) {
             rmdir($configPath);
         }
-
-        static::_recursivelyReplacePlaceholders($path);
-
-        unlink(__FILE__);
-        rmdir(__DIR__);
     }
 
     /**
