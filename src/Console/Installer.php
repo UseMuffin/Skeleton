@@ -103,6 +103,22 @@ class Installer
     {
         $io = $event->getIO();
 
+        static::_configureInstallerProperties($io);
+        static::_customizeComposerFile();
+        $io->write(sprintf(
+            "<info>The %s plugin for CakePHP was successfully created.</info>\n",
+            static::$plugin
+        ));
+    }
+
+    /**
+     * Interactively configures the installer's properties.
+     *
+     * @param \Composer\IO\IOInterface $io Input/output.
+     * @return void
+     */
+    protected static function _configureInstallerProperties(IOInterface $io)
+    {
         static::$author = static::_ask(
             $io,
             'What is your name?',
@@ -199,17 +215,11 @@ class Installer
                 static::_dasherize(static::$name)
             );
         }
-
-        static::_customizeComposerFile();
-        $io->write(sprintf(
-            "<info>The %s plugin for CakePHP was successfully created.</info>\n",
-            static::$plugin
-        ));
     }
 
     /**
      * Post-install hook.
-
+     *
      * Responsible of customizes all files, creates necessary directories
      * before finally auto-destructing (007-style).
      *
