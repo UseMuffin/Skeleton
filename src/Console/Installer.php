@@ -112,6 +112,26 @@ class Installer
     }
 
     /**
+     * Post-install hook.
+     *
+     * Responsible of customizes all files, creates necessary directories
+     * before finally auto-destructing (007-style).
+     *
+     * @param \Composer\Script\Event $event Composer script event.
+     * @return void
+     */
+    public static function postInstall(Event $event = null)
+    {
+        $path = dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR;
+
+        static::_removeUnusedConfigurationFiles($path);
+        static::_recursivelyReplacePlaceholders($path);
+
+        unlink(__FILE__);
+        rmdir(__DIR__);
+    }
+
+    /**
      * Interactively configures the installer's properties.
      *
      * @param \Composer\IO\IOInterface $io Input/output.
@@ -215,26 +235,6 @@ class Installer
                 static::_dasherize(static::$name)
             );
         }
-    }
-
-    /**
-     * Post-install hook.
-     *
-     * Responsible of customizes all files, creates necessary directories
-     * before finally auto-destructing (007-style).
-     *
-     * @param \Composer\Script\Event $event Composer script event.
-     * @return void
-     */
-    public static function postInstall(Event $event = null)
-    {
-        $path = dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR;
-
-        static::_removeUnusedConfigurationFiles($path);
-        static::_recursivelyReplacePlaceholders($path);
-
-        unlink(__FILE__);
-        rmdir(__DIR__);
     }
 
     /**
