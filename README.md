@@ -1,35 +1,15 @@
-# {{pluginName}}
+# Skeleton
 
-[![Build Status](https://img.shields.io/travis/UseMuffin/{{pluginName}}/master.svg?style=flat-square)](https://travis-ci.org/UseMuffin/{{pluginName}})
-[![Coverage](https://img.shields.io/codecov/c/github/UseMuffin/{{pluginName}}.svg?style=flat-square)](https://codecov.io/github/UseMuffin/{{pluginName}})
-[![Total Downloads](https://img.shields.io/packagist/dt/muffin/{{lcPluginName}}.svg?style=flat-square)](https://packagist.org/packages/muffin/{{lcPluginName}})
-[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
-
-{{@TODO description}}
-
-## Install
-
-Using [Composer][composer]:
-
-```
-composer require muffin/{{lcPluginName}}:1.0.x-dev
-```
-
-You then need to load the plugin. You can use the shell command:
-
-```
-bin/cake plugin load Muffin/{{pluginName}}
-```
-
-or by manually adding statement shown below to your app's `config/bootstrap.php`:
-
-```php
-Plugin::load('Muffin/{{pluginName}}');
-```
+A plugin skeleton builder for [CakePHP 3][cakephp] using [Composer][composer].
 
 ## Usage
 
-{{@TODO documentation}}
+```sh
+composer create-project muffin/skeleton CustomName
+```
+
+This will create the plugin's project folder and trigger some
+questions to get you quickly started.
 
 ## Patches & Features
 
@@ -44,7 +24,7 @@ To ensure your PRs are considered for upstream, you MUST follow the [CakePHP cod
 
 ## Bugs & Feedback
 
-http://github.com/usemuffin/{{lcPluginName}}/issues
+http://github.com/usemuffin/skeleton
 
 ## License
 
