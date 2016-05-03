@@ -9,7 +9,9 @@ composer create-project muffin/skeleton CustomName
 ```
 
 This will create the plugin's project folder and trigger some
-questions to get you quickly started.
+questions to get you quickly started:
+
+![gif](https://cloud.githubusercontent.com/assets/33527/14534536/9e70c76c-0237-11e6-9cd8-a837f3d778fe.gif)
 
 ## Patches & Features
 
