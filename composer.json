@@ -34,11 +34,9 @@
         }
     },
     "scripts": {
-        "pre-install-cmd": ["Muffin\\Skeleton\\Console\\Installer::preInstall"],
-        "post-install-cmd": [
-            "Muffin\\Skeleton\\Console\\Installer::postInstall",
-            "composer update"
-        ],
+        "post-root-package-install": "Muffin\\Skeleton\\Console\\Installer::preInstall",
+        "post-create-package-cmd": "Muffin\\Skeleton\\Console\\Installer::postInstall",
+        "post-install-cmd": "composer update",
         "test": [
             "phpcs src tests",
             "phpunit"
